@@ -99,7 +99,7 @@ export default class SignUp extends React.Component{
                     <p></p>
                     <div className='text-center'>
                         <button className='btn btn-primary' onClick={this.handleClick} disabled={pending || passwordCheck !== undefined}>
-                            {pending && <span className="spinner-border spinner-border-sm"></span>}Sign Up</button>
+                            {pending && <span className="spinner-border spinner-border-sm"></span>} Sign Up</button>
                     </div>
                 </form>
             </div>
