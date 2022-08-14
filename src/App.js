@@ -6,22 +6,45 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import NavBar from './components/NavBar';
 import AdminProfile from './adminPages/AdminProfile';
+import React from 'react';
 
-function App() {
-  return (
-    <div>
-      <Router>
-        <NavBar />
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route path="/user/:username" component={AdminProfile} />
-          <Redirect to="/" />
-        </Switch>
-      </Router>
-    </div>
-  );
+class App extends React.Component {
+
+  state = {
+    isLoggedIn: false,
+    username: undefined
+  };
+
+  signInSuccess = (username) => {
+      this.setState({
+        username,
+        isLoggedIn: true
+      })
+  }
+
+
+  render(){
+
+    const {isLoggedIn, username} = this.state;
+
+    return (
+      <div>
+        <Router>
+          <NavBar username={username} isLoggedIn={isLoggedIn}/>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/signin" component={(props) => {
+              return <SignIn {...props}  signInSuccess={this.signInSuccess}/>
+              }} 
+            />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/user/:username" component={AdminProfile} />
+            <Redirect to="/" />
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

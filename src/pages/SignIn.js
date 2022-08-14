@@ -21,6 +21,7 @@ class SignIn extends Component{
     onClickLogin = async event => {
         event.preventDefault();
         const { username, password } = this.state;
+        const { signInSuccess } = this.props;
         const creds = {
             username,
             password
@@ -34,6 +35,7 @@ class SignIn extends Component{
         try{
             await login(creds);
             push("/");
+            signInSuccess(username);
         } catch(apiError){
             this.setState({
                 error: apiError.response.data.message
