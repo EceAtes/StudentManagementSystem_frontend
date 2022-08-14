@@ -6,7 +6,7 @@ const Input = props => {
     return(
         <div className="form-group">
             <label>{label}</label>
-            <input className={className} name = {name} onChange={onChange} type={type}/>
+            <input className={className} name = {name} onChange={onChange} type={type} disabled={false}/>
             <div className="invalid-feedback">{error}</div>
         </div>
 );

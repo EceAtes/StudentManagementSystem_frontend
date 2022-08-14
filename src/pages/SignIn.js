@@ -25,12 +25,15 @@ class SignIn extends Component{
             username,
             password
         }
+        const {push} = this.props.history;
+
         this.setState({
             error: null,
             pending: true
         })
         try{
             await login(creds);
+            push("/");
         } catch(apiError){
             this.setState({
                 error: apiError.response.data.message
@@ -49,9 +52,9 @@ class SignIn extends Component{
                 <form>
                     <Input label="Username" name="username" onChange={this.onChange}/>
                     <Input label="Password" name="password" type="password" onChange={this.onChange}/>
-                    {this.state.error && <div className="alert alert-danger">
+                    {this.state.error && (<div className="alert alert-danger">
                         Username or password is invalid
-                    </div>}
+                    </div>)}
                     <br/>
                     <div className="text-center">
                         <button className="btn btn-primary" onClick={this.onClickLogin} disabled={pending}>
