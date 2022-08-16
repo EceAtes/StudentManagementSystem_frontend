@@ -63,6 +63,18 @@ export default class AddUser extends React.Component{
         });
     };
 
+    generatePassword = () => {
+        let generatePassword = "";
+        var characters = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*?";
+
+        for (var i = 0; i < 10; i++) {
+            generatePassword += characters.charAt(
+            Math.floor(Math.random() * characters.length)
+            );
+        } 
+        return generatePassword;
+    }
+
     handleClick = async event => {
         event.preventDefault();
         /* const {username, password} = this.state;
@@ -71,14 +83,25 @@ export default class AddUser extends React.Component{
             password
         }; */
 
+        let genPassword = this.generatePassword();
+        console.log(genPassword);
+
         const body = {
+            accountType: this.state.accountType,
             username: this.state.username,
-            password: this.state.password
+            password: genPassword
         };
+        
+        console.log(body.password);
+        const {push} = this.props.history;
+
+        
+
         this.setState({pending: true});
         
         try{
             const response = await signUpApi(body);
+            push("/signin");
         }catch (error){
             if(error.response.data.validationErr){
                 this.setState({

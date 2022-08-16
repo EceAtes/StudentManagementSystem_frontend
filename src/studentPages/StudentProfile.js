@@ -42,13 +42,19 @@ class StudentProfile extends Component{
         const {pending, username} = this.state;
         return(
             <div className="container">
+                <p>STUDENT</p>
                 <h1>Hello, {username}</h1>
+                <br/>
                 <button className='btn btn-primary' onClick={this.handleClick}>List your courses</button>
+                <br/>
+                <br/>
                 <button className='btn btn-primary' onClick={this.handleClick}>Add new courses</button>
+                <br/>
+                <br/>
                 <button className='btn btn-primary' onClick={this.handleClick}>List all courses</button>
             </div>
         )
     }
 }
 
-export default SignIn;
+export default StudentProfile;

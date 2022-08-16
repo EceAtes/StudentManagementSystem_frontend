@@ -1,20 +1,13 @@
 import React, { Component } from "react";
 import Input from "../components/Input";
 import { login } from "../api/apis";
-import UserCard from "../components/UserCard";
+import AdminProfile from "./adminPages/AdminProfile";
+import StudentProfile from "./studentPages/StudentProfile";
 
-/* const AdminProfile = () => {
-    return(
-        <div className="container">
-            <UserCard />
-        </div>
-    );
-};
 
-export default AdminProfile; */
 
- class AdminProfile extends Component{
-    /* state = {
+class StudentProfile extends Component{
+    state = {
         username: null
     }
 
@@ -48,29 +41,18 @@ export default AdminProfile; */
             pending: false
         })
     }
- */
+
     render(){
-        //npmconst {pending } = this.state;
-        const { username } = this.props;
+        const {pending, username} = this.state;
         return(
             <div className="container">
-                <p>ADMIN</p>
-                <UserCard username={username}/>
-                <p>{}</p>
-                <br/>
                 <h1>Hello, {username}</h1>
-                <br/>
-                <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>Add New Course</button>
-                <br/>
-                <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>Edit courses</button>
-                <br/>
-                <br/>
+                <button className='btn btn-primary' onClick={this.handleClick}>List your courses</button>
+                <button className='btn btn-primary' onClick={this.handleClick}>Add new courses</button>
                 <button className='btn btn-primary' onClick={this.handleClick}>List all courses</button>
             </div>
         )
     }
 }
 
-export default AdminProfile; 
+export default SignIn;

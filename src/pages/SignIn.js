@@ -4,6 +4,7 @@ import { login } from "../api/apis";
 
 class SignIn extends Component{
     state = {
+        accountType: undefined,
         username: null,
         password: null,
         error: null,
@@ -20,11 +21,12 @@ class SignIn extends Component{
 
     onClickLogin = async event => {
         event.preventDefault();
-        const { username, password } = this.state;
+        const { username, password, accountType } = this.state;
         const { signInSuccess } = this.props;
         const creds = {
             username,
-            password
+            password,
+            accountType
         }
         const {push} = this.props.history;
 
@@ -35,7 +37,7 @@ class SignIn extends Component{
         try{
             await login(creds);
             push("/user/user");
-            signInSuccess(username);
+            signInSuccess(username, accountType);
         } catch(apiError){
             this.setState({
                 error: apiError.response.data.message
