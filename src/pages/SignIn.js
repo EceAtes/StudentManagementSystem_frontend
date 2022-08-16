@@ -34,7 +34,7 @@ class SignIn extends Component{
         })
         try{
             await login(creds);
-            push("/");
+            push("/user/user");
             signInSuccess(username);
         } catch(apiError){
             this.setState({

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class NavBar extends Component {
 
     render(){
-        const {isLoggedIn, username} = this.props;
+        const {isLoggedIn, username, logoutSuccess} = this.props;
         let links = (
             <ul className='navbar-nav ml-auto'>
                 <li>
@@ -14,6 +14,7 @@ class NavBar extends Component {
                 </li>
             </ul>
         );
+        console.log("isLoggedIn:" + isLoggedIn);
 
         if(isLoggedIn){
             links = (
@@ -23,7 +24,7 @@ class NavBar extends Component {
                             {username}
                         </Link>
                     </li>
-                    <li className='nav-link'>
+                    <li className='nav-link' onClick={logoutSuccess} style={{cursor: 'pointer'}}>
                         Logout
                     </li>
                 </ul>

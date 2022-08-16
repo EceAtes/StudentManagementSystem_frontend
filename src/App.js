@@ -7,38 +7,49 @@ import SignUp from './pages/SignUp';
 import NavBar from './components/NavBar';
 import AdminProfile from './adminPages/AdminProfile';
 import React from 'react';
+import UserCard from './components/UserCard';
 
 class App extends React.Component {
 
   state = {
-    isLoggedIn: false,
+    isLoggedIn: true,
     username: undefined
   };
 
   signInSuccess = (username) => {
       this.setState({
-        username,
-        isLoggedIn: true
+        isLoggedIn: true,
+        username
       })
+  }
+
+  logoutSuccess = () => {
+    this.setState({
+      isLoggedIn: false,
+      username: undefined
+    })
   }
 
 
   render(){
 
     const {isLoggedIn, username} = this.state;
-
+    /* console.log("App:");
+    console.log(username); */
     return (
       <div>
         <Router>
-          <NavBar username={username} isLoggedIn={isLoggedIn}/>
+          <NavBar username={username} isLoggedIn={isLoggedIn} logoutSuccess={this.logoutSuccess}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/signin" component={(props) => {
-              return <SignIn {...props}  signInSuccess={this.signInSuccess}/>
+              return <SignIn {...props} signInSuccess={this.signInSuccess}/>
               }} 
             />
             <Route path="/signup" component={SignUp} />
-            <Route path="/user/:username" component={AdminProfile} />
+            <Route path="/user/:username" component={props => {
+              return <AdminProfile {...props} username={username} />
+            }} />
             <Redirect to="/" />
           </Switch>
         </Router>

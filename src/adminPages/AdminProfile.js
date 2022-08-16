@@ -1,9 +1,20 @@
 import React, { Component } from "react";
 import Input from "../components/Input";
 import { login } from "../api/apis";
+import UserCard from "../components/UserCard";
 
-class AdminProfile extends Component{
-    state = {
+/* const AdminProfile = () => {
+    return(
+        <div className="container">
+            <UserCard />
+        </div>
+    );
+};
+
+export default AdminProfile; */
+
+ class AdminProfile extends Component{
+    /* state = {
         username: null
     }
 
@@ -37,11 +48,14 @@ class AdminProfile extends Component{
             pending: false
         })
     }
-
+ */
     render(){
-        const {pending, username} = this.state;
+        //npmconst {pending } = this.state;
+        const { username } = this.props;
         return(
             <div className="container">
+                <UserCard username={username}/>
+                <p>{}</p>
                 <br/>
                 <h1>Hello, {username}</h1>
                 <br/>
@@ -58,4 +72,4 @@ class AdminProfile extends Component{
     }
 }
 
-export default AdminProfile;
+export default AdminProfile; 
