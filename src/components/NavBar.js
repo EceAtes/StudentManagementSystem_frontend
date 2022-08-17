@@ -24,8 +24,10 @@ class NavBar extends Component {
                             {username}
                         </Link>
                     </li>
-                    <li className='nav-link' onClick={logoutSuccess} style={{cursor: 'pointer'}}>
-                        Logout
+                    <li onClick={logoutSuccess} style={{cursor: 'pointer'}}>
+                        <Link  className='nav-link' to={'/'}>
+                            Logout
+                        </Link>
                     </li>
                 </ul>
             );

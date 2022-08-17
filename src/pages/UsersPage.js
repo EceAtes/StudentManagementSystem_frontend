@@ -1,7 +1,7 @@
-import React from 'react';
+/* import React from 'react';
 import UserList from '../components/UserList';
 
-const HomePage = () => {
+const UsersPage = () => {
     return (
         <div className='container'>
             <UserList />
@@ -9,4 +9,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage;
+export default UsersPage; */

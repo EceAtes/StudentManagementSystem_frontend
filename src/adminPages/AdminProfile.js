@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+//import {Routes, Route, useNavigate} from 'react-router-dom'
 import Input from "../components/Input";
 import { login } from "../api/apis";
 import UserCard from "../components/UserCard";
@@ -16,9 +17,18 @@ export default AdminProfile; */
  class AdminProfile extends Component{
     /* state = {
         username: null
+    }*/
+
+    handleNewUser = () => {
+        const {push} = this.props.history;
+        push("/adduser");
     }
 
-    onChange = event => {
+    handleUserList = () => {
+        const {push} = this.props.history;
+        push("/userlist");
+    }
+    /*onChange = event => {
         const {name, value} = event.target;
         this.setState({
             [name]: value,
@@ -61,7 +71,13 @@ export default AdminProfile; */
                 <h1>Hello, {username}</h1>
                 <br/>
                 <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>Add New Course</button>
+                <button className='btn btn-primary' onClick={this.handleClick} >Add New Course</button>
+                <br/>
+                <br/>
+                <button className='btn btn-primary' onClick={this.handleNewUser} >Add new user</button>
+                <br/>
+                <br/>
+                <button className='btn btn-primary' onClick={this.handleUserList}>See all users</button>
                 <br/>
                 <br/>
                 <button className='btn btn-primary' onClick={this.handleClick}>Edit courses</button>

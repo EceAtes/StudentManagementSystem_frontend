@@ -2,7 +2,6 @@
 import '../App.css';
 import React from 'react';
 import {signUpApi} from '../api/apis'
-import { toHaveDisplayValue } from '@testing-library/jest-dom/dist/matchers';
 //import { toHaveAccessibleDescription } from '@testing-library/jest-dom/dist/matchers';
 import Input from '../components/Input';
 
@@ -15,7 +14,7 @@ export default class AddUser extends React.Component{
         email: null,
         username: null,
         usernameDecided: null,
-        password: null,
+        password: "",
         pending: false,
         errors: {}
     };
@@ -85,6 +84,7 @@ export default class AddUser extends React.Component{
 
         let genPassword = this.generatePassword();
         console.log(genPassword);
+        console.log(this.state.password);
 
         const body = {
             accountType: this.state.accountType,
@@ -101,7 +101,11 @@ export default class AddUser extends React.Component{
         
         try{
             const response = await signUpApi(body);
-            push("/signin");
+            push({
+                pathname: "/newuser",
+                state: genPassword
+            });
+            
         }catch (error){
             if(error.response.data.validationErr){
                 this.setState({

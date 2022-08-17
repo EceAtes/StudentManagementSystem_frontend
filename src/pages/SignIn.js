@@ -36,7 +36,10 @@ class SignIn extends Component{
         })
         try{
             await login(creds);
-            push("/user/user");
+            //const response = await login(creds);
+            //accountType = response.data;
+            push(`/user/${username}`);
+            console.log("signIn try account type: " + accountType);
             signInSuccess(username, accountType);
         } catch(apiError){
             this.setState({

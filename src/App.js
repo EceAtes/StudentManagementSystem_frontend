@@ -10,6 +10,9 @@ import AdminProfile from './adminPages/AdminProfile';
 import React from 'react';
 import UserCard from './components/UserCard';
 import AddUser from './adminPages/AddUser';
+import CurrentUser from './CurrentUser';
+import PasswordPage from './adminPages/PasswordPage';
+import UserList from './components/UserList';
 
 class App extends React.Component {
 
@@ -20,6 +23,7 @@ class App extends React.Component {
   };
 
   signInSuccess = (username, accountType) => {
+      console.log("app account type: " + accountType);
       this.setState({
         isLoggedIn: true,
         username,
@@ -47,6 +51,8 @@ class App extends React.Component {
           <NavBar username={username} isLoggedIn={isLoggedIn} logoutSuccess={this.logoutSuccess}/>
           <Switch>
             <Route exact path="/" component={HomePage} />
+            <Route path="/newuser" component={PasswordPage} />
+            <Route path="/userlist" component={UserList} />
             <Route path="/signin" component={(props) => {
               return <SignIn {...props} signInSuccess={this.signInSuccess}/>
               }} 
@@ -55,10 +61,7 @@ class App extends React.Component {
             <Route path="/adduser" component={AddUser} />
             <Route path="/user/:username" component={props => {
               console.log("app:" + accountType);
-              if(accountType === "admin" || accountType === "Admin"){
-                return <AdminProfile {...props} username={username} />
-              }
-              return <StudentProfile {...props} username={username} />
+              return <CurrentUser {...props} username={username} accountType={accountType}/>
             }} />
             <Redirect to="/" />
           </Switch>

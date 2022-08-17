@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import Input from "../components/Input";
-import { login } from "../api/apis";
+import { login } from "./api/apis";
 import AdminProfile from "./adminPages/AdminProfile";
 import StudentProfile from "./studentPages/StudentProfile";
 
 
 
-class StudentProfile extends Component{
+class CurrentUser extends Component{
     state = {
         username: null
     }
@@ -21,10 +20,11 @@ class StudentProfile extends Component{
 
     onClickLogin = async event => {
         event.preventDefault();
-        const { username, password } = this.state;
+        const { username, password, accountType } = this.state;
         const creds = {
             username,
-            password
+            password,
+             accountType
         }
         this.setState({
             error: null,
@@ -43,16 +43,18 @@ class StudentProfile extends Component{
     }
 
     render(){
-        const {pending, username} = this.state;
-        return(
-            <div className="container">
-                <h1>Hello, {username}</h1>
-                <button className='btn btn-primary' onClick={this.handleClick}>List your courses</button>
-                <button className='btn btn-primary' onClick={this.handleClick}>Add new courses</button>
-                <button className='btn btn-primary' onClick={this.handleClick}>List all courses</button>
-            </div>
-        )
+        const {username, accountType} = this.props;
+        let page;
+        if (accountType === "Öğrenci"){  
+            page = <StudentProfile {...this.props} username={username}/>
+        } else {
+            page =  <AdminProfile {...this.props} username={username} />
+        }
+        
+        console.log("current:" + accountType);
+        
+        return page;
     }
 }
 
-export default SignIn;
+export default CurrentUser;
