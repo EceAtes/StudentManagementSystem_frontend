@@ -14,7 +14,7 @@ class NavBar extends Component {
                 </li>
             </ul>
         );
-        console.log("isLoggedIn:" + isLoggedIn);
+        //console.log("isLoggedIn:" + isLoggedIn);
 
         if(isLoggedIn){
             links = (

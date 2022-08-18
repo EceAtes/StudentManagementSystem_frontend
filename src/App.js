@@ -23,7 +23,7 @@ class App extends React.Component {
   };
 
   signInSuccess = (username, accountType) => {
-      console.log("app account type: " + accountType);
+     // console.log("app account type: " + accountType);
       this.setState({
         isLoggedIn: true,
         username,
@@ -60,7 +60,7 @@ class App extends React.Component {
             <Route path="/signup" component={SignUp} />
             <Route path="/adduser" component={AddUser} />
             <Route path="/user/:username" component={props => {
-              console.log("app:" + accountType);
+             // console.log("app:" + accountType);
               return <CurrentUser {...props} username={username} accountType={accountType}/>
             }} />
             <Redirect to="/" />

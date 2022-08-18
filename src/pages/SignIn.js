@@ -4,7 +4,6 @@ import { login } from "../api/apis";
 
 class SignIn extends Component{
     state = {
-        accountType: undefined,
         username: null,
         password: null,
         error: null,
@@ -21,12 +20,13 @@ class SignIn extends Component{
 
     onClickLogin = async event => {
         event.preventDefault();
-        const { username, password, accountType } = this.state;
+        const { username, password } = this.state;
         const { signInSuccess } = this.props;
+        let res = undefined;
+        let accountType = undefined;
         const creds = {
             username,
             password,
-            accountType
         }
         const {push} = this.props.history;
 
@@ -35,17 +35,29 @@ class SignIn extends Component{
             pending: true
         })
         try{
-            await login(creds);
-            //const response = await login(creds);
-            //accountType = response.data;
-            push(`/user/${username}`);
-            console.log("signIn try account type: " + accountType);
+            //await login(creds);
+            res = await login(creds);
+        } catch(e){
+            //if(response.data === null){
+           //     console.log("aaaaaaaaa");
+         //   }else{
+                this.setState({
+                    error: e.response.data.message
+                })
+        //    }
+        }   
+           console.log(res.data.accountType);
+           
+            accountType = res.data.accountType
+    
+        console.log(accountType);
+            push({
+                pathname: `/user/${username}`,
+                name: username,
+                type: accountType
+            });
+            //console.log("signIn try account type: " + accountType);
             signInSuccess(username, accountType);
-        } catch(apiError){
-            this.setState({
-                error: apiError.response.data.message
-            })
-        }
         this.setState({
             pending: false
         })

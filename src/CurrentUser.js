@@ -43,15 +43,17 @@ class CurrentUser extends Component{
     }
 
     render(){
-        const {username, accountType} = this.props;
+        const {name, type} = this.props.location;
+        console.log("current name:" + name);
+        console.log("current type:" + type);
+
         let page;
-        if (accountType === "Öğrenci"){  
-            page = <StudentProfile {...this.props} username={username}/>
+        if (type === "Öğrenci"){  
+            page = <StudentProfile {...this.props} username={name}/>
         } else {
-            page =  <AdminProfile {...this.props} username={username} />
+            page =  <AdminProfile {...this.props} username={name} />
         }
         
-        console.log("current:" + accountType);
         
         return page;
     }
