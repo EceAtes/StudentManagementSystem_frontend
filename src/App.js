@@ -13,6 +13,7 @@ import AddUser from './adminPages/AddUser';
 import CurrentUser from './CurrentUser';
 import PasswordPage from './adminPages/PasswordPage';
 import UserList from './components/UserList';
+import CoursesPage from './pages/CoursesPage';
 
 class App extends React.Component {
 
@@ -52,6 +53,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/newuser" component={PasswordPage} />
+            <Route path="/courses" component={CoursesPage} />
             <Route path="/userlist" component={UserList} />
             <Route path="/signin" component={(props) => {
               return <SignIn {...props} signInSuccess={this.signInSuccess}/>
