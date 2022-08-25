@@ -9,6 +9,13 @@ import EditPage from "./EditPage";
 
  const CoursesPage = props => {
     let prevName = "Intro to CS";//databaseden gelecek
+    let prevType = "Mandatory";//databaseden gelecek
+    let prevCode = "CS101";//databaseden gelecek
+    let prevRoom = "AA1";//databaseden gelecek
+    let prevTime = "9.30 - 10.20";//databaseden gelecek
+    let prevLecturer = "A B";//databaseden gelecek
+    let prevAssistant = "None";//databaseden gelecek
+    
     const [editMode, setEditMode] = useState(false);
     //const [updated, setUpdated] = useState();
     const [name, setName] = useState("Intro to CS");
@@ -52,6 +59,7 @@ import EditPage from "./EditPage";
         return(
             <div className="container">
                 <h1>Courses</h1>
+                <button className="btn btn-primary d-inline-flex" onClick={handleSave} > Add new course </button>
                 <table className="table table-hover">
                 <thead>
                     <tr>
@@ -86,28 +94,28 @@ import EditPage from "./EditPage";
                     <>
                         <tr>
                         <th scope="row"><input name="name" defaultValue={name} onChange={(event) => {setName(event.target.value)}}/>{name}</th>
-                        <td> <input name="type" defaultValue={type} /></td>
-                        <td><input name="code" defaultValue={code} /></td>
+                        <td> <input name="type" defaultValue={type} onChange={(event) => {setType(event.target.value)}}/></td>
+                        <td><input name="code" defaultValue={code}onChange={(event) => {setCode(event.target.value)}} /></td>
                         <td>
-                        <select name="time" >
-                            <option value="1">8.40-9.30</option>
-                            <option value="2">9.40-10.30</option>
-                            <option value="3">10.40-11.30</option>
-                            <option value="4">11.40-12.30</option>
-                            <option value="5">13.30-14.20</option>
-                            <option value="6">14.30-15.20</option>
-                            <option value="7">15.30-16.20</option>
-                            <option value="8">16.30-17.20</option>
+                        <select name="time" value={time} onChange={(event) => {setTime(event.target.value); console.log(time);}}>
+                            <option value="8.40-9.30">8.40-9.30</option>
+                            <option value="9.40-10.30">9.40-10.30</option>
+                            <option value="10.40-11.30">10.40-11.30</option>
+                            <option value="11.40-12.30">11.40-12.30</option>
+                            <option value="13.30-14.20">13.30-14.20</option>
+                            <option value="14.30-15.20">14.30-15.20</option>
+                            <option value="15.30-16.20">15.30-16.20</option>
+                            <option value="16.30-17.20">16.30-17.20</option>
                             </select>
                         </td>
-                        <td><input name="room" defaultValue={room}/></td>
-                        <td><input name="lecturer" defaultValue={lecturer} /></td>
-                        <td><input name="assistant" defaultValue={assistant}/></td>
+                        <td><input name="room" defaultValue={room} onChange={(event) => {setRoom(event.target.value)}}/></td>
+                        <td><input name="lecturer" defaultValue={lecturer} onChange={(event) => {setLecturer(event.target.value)}}/></td>
+                        <td><input name="assistant" defaultValue={assistant}onChange={(event) => {setAssistant(event.target.value)}}/></td>
                         <td>
                             <button className="btn btn-primary d-inline-flex" onClick={handleSave} > Save </button>
                             <br/>
                             <br/>
-                            <button className="btn btn-light d-inline-flex" onClick={() => {setEditMode(false); setName(prevName);}} > Cancel </button>
+                            <button className="btn btn-light d-inline-flex" onClick={() => {setEditMode(false); setName(prevName); setType(prevType);setCode(prevCode);setTime(prevTime);setRoom(prevRoom);setLecturer(prevLecturer);setAssistant(prevAssistant);}} > Cancel </button>
                             <br/>
                             <br/>
                             <button className="btn btn-light d-inline-flex" onClick={handleDelete} > Delete Course </button>
