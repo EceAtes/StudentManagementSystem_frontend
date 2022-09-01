@@ -11,3 +11,12 @@ export const login = creds => {
 export const getUsers = () => {
     return axios.get('/api/1.0/users');
 }
+
+export const addCourse = (body) => {
+    return axios.post('/courses', body);
+}
+
+export const getCourses = () => {
+    return axios.get('/courses');
+    
+}

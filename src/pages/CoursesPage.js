@@ -1,8 +1,10 @@
 import React, { Component, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import Input from "../components/Input";
 import { login } from "../api/apis";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import EditPage from "./EditPage";
+import Test1 from "./test1";
 
 //value={time}  onChange={this.handleChange}
 
@@ -54,12 +56,19 @@ import EditPage from "./EditPage";
         setEditMode(false);
     }
 
+    
+    const history = useHistory();
+    const handleNewButton = () => history.push('/addcourses');
 
         console.log(editMode);
         return(
             <div className="container">
                 <h1>Courses</h1>
-                <button className="btn btn-primary d-inline-flex" onClick={handleSave} > Add new course </button>
+                <br/>
+                <button className="btn btn-primary d-inline-flex" onClick={handleNewButton} > Add new course </button>
+                <br/>
+                <br/>
+                <br/>
                 <table className="table table-hover">
                 <thead>
                     <tr>
@@ -75,20 +84,7 @@ import EditPage from "./EditPage";
                 </thead>
                 <tbody>
                 {!editMode && (
-                    <>
-                        <tr>
-                        <th scope="row">{name}</th>
-                        <td>{type}</td>
-                        <td>{code}</td>
-                        <td>{time}</td>
-                        <td>{room}</td>
-                        <td>{lecturer}</td>
-                        <td>{assistant}</td>
-                        <td>
-                            <button className="btn btn-success d-inline-flex" onClick={() => setEditMode(true)} > Edit </button>
-                        </td>
-                        </tr>
-                    </>
+                    <Test1 />
                 )}
                 {editMode && (
                     <>

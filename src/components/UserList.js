@@ -13,15 +13,18 @@ componentDidMount(){
         this.setState({
             users: response.data.content
         })
+        
     })
+    
 }
 
-    render(){
-        const { users } = this.state;
-        return(
-            <div>
+render(){
+    const { users } = this.state;
+    return(
+        <div>
                 <h2 className='card-header text-center'>Users</h2>
                 <div>
+                
                     {users.map((user, index) => (
                         <UserItems key={user.username} user={user}/>
                     ))}

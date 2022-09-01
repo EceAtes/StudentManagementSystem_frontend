@@ -8,10 +8,11 @@ import reportWebVitals from './reportWebVitals';
 import AddUser from './adminPages/AddUser';
 import AdminProfile from './adminPages/AdminProfile';
 import CoursesPage from './pages/CoursesPage';
+import AddCourses from './pages/AddCourses';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<CoursesPage />);
+root.render(<App />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
