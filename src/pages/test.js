@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getCourses } from "../api/apis";
-import Test1 from "./test1";
+import Test1 from "./AllCourses";
 
 function Table({theadData, tbodyData}) {
     return (

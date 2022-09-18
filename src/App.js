@@ -16,7 +16,9 @@ import UserList from './components/UserList';
 import CoursesPage from './pages/CoursesPage';
 import AddCourses from './pages/AddCourses';
 import Test from './pages/test';
-import Test1 from './pages/test1';
+import Test1 from './pages/AllCourses';
+import EditPage from './pages/EditPage';
+import AllCourses from './pages/AllCourses';
 
 class App extends React.Component {
 
@@ -58,9 +60,9 @@ class App extends React.Component {
             <Route path="/newuser" component={PasswordPage} />
             <Route path="/courses" component={CoursesPage} />
             <Route path="/userlist" component={UserList} />
+            <Route path="/editcourse" component={EditPage} />
             <Route path="/addcourses" component={AddCourses} />
-            <Route path="/test" component={Test} />
-            <Route path="/test1" component={Test1} />
+            <Route path="/allcourses" component={AllCourses} />
             <Route path="/signin" component={(props) => {
               return <SignIn {...props} signInSuccess={this.signInSuccess}/>
               }} 

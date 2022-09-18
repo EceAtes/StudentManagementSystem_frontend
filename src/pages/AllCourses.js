@@ -2,7 +2,7 @@ import React, { userState} from 'react';
 import { Link, withRouter, useHistory } from 'react-router-dom';
 import { getCourses } from "../api/apis";
 
-export default class Test1 extends React.Component {
+export default class AllCourses extends React.Component {
 
     state = {
         courses: []
@@ -88,7 +88,6 @@ export default class Test1 extends React.Component {
                                     <td>{course.room}</td>
                                     <td>{course.lecturer}</td>
                                     <td>{course.assistant}</td>
-                                    <td><button className="btn btn-sm btn btn-info" onClick={this.handleEdit} >Edit Course</button></td>
                                 </tr>
                             ))}
                         </tbody>

@@ -4,7 +4,7 @@ import Input from "../components/Input";
 import { login } from "../api/apis";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
 import EditPage from "./EditPage";
-import Test1 from "./test1";
+import AllCourses from "./AllCourses";
 
 //value={time}  onChange={this.handleChange}
 
@@ -84,7 +84,7 @@ import Test1 from "./test1";
                 </thead>
                 <tbody>
                 {!editMode && (
-                    <Test1 />
+                    <AllCourses />
                 )}
                 {editMode && (
                     <>

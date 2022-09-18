@@ -28,6 +28,21 @@ export default AdminProfile; */
         const {push} = this.props.history;
         push("/userlist");
     }
+
+    handleListCourses = () => {
+        const {push} = this.props.history;
+        push('/allcourses');
+    }
+
+    handleEditCourses = () => {
+        const {push} = this.props.history;
+        push('/editcourse');
+    }
+
+    handleAdd = () => {
+        const {push} = this.props.history;
+        push('/addcourses');
+    }
     /*onChange = event => {
         const {name, value} = event.target;
         this.setState({
@@ -71,7 +86,7 @@ export default AdminProfile; */
                 <h1>Hello, {username}</h1>
                 <br/>
                 <br/>
-                <button className='btn btn-primary' onClick={this.handleClick} >Add New Course</button>
+                <button className='btn btn-primary' onClick={this.handleAdd} >Add New Course</button>
                 <br/>
                 <br/>
                 <button className='btn btn-primary' onClick={this.handleNewUser} >Add new user</button>
@@ -80,10 +95,10 @@ export default AdminProfile; */
                 <button className='btn btn-primary' onClick={this.handleUserList}>See all users</button>
                 <br/>
                 <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>Edit courses</button>
+                <button className='btn btn-primary' onClick={this.handleEditCourses}>Edit courses</button>
                 <br/>
                 <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>List all courses</button>
+                <button className='btn btn-primary' onClick={this.handleListCourses}>List all courses</button>
             </div>
         )
     }

@@ -38,6 +38,11 @@ class StudentProfile extends Component{
         })
     }
 
+    handleListCourses = () => {
+        const {push} = this.props.history;
+        push('/allcourses');
+    }
+
     render(){
         const {pending, username} = this.state;
         return(
@@ -48,10 +53,7 @@ class StudentProfile extends Component{
                 <button className='btn btn-primary' onClick={this.handleClick}>List your courses</button>
                 <br/>
                 <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>Add new courses</button>
-                <br/>
-                <br/>
-                <button className='btn btn-primary' onClick={this.handleClick}>List all courses</button>
+                <button className='btn btn-primary' onClick={this.handleListCourses}>List all courses</button>
             </div>
         )
     }
